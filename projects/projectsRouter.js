@@ -23,6 +23,16 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+router.get('/projectActions/:projectId', async (req, res) => {
+    try {
+        const projectId = req.params.projectId;
+        const actionsOfProject = await projectModel.getProjectActions(projectId);
+        res.status(200).json(actionsOfProject);
+    } catch(err) {
+        res.status(418).json({ message: err });
+    }
+});
+
 router.post('/', async (req, res) => {
     try {
         const newProject = req.body;

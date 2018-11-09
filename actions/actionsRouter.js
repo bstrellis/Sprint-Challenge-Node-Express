@@ -48,7 +48,7 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', async (req, res) => {
     try {
         const id = req.params.id;
-        const deleteCount = await projectModel.remove(id);
+        const deleteCount = await actionModel.remove(id);
         res.status(200).json({deleteCount, id});
     } catch(err) {
         res.status(404).json({ message: err });
